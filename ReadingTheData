@@ -1,0 +1,21 @@
+import csv
+from operator import sub
+import numpy as np
+import pandas as pd
+from pandas import Series, DataFrame
+import matplotlib.pyplot as plt
+from zmq import has
+
+with open(r'insurance.csv', 'r') as insurance_data_csv:
+    insurance_data = csv.reader(insurance_data_csv, delimiter = ' ')
+    insurance_data_list = []
+    for row in insurance_data:
+        insurance_data_list.append(', '.join(row))
+        
+insurance_data_list.pop(0) #removing the headers element      
+
+insurance_data_sublist = []
+for data_list in insurance_data_list:
+    insurance_data_sublist.append(data_list.split(',')) #rows of data in sublist
+
+print(insurance_data_sublist)
